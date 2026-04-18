@@ -198,7 +198,7 @@
 <!-- NAV -->
 <nav>
   <a href="#mom">🟢 Khôi phục office</a>
-  <a href="#rar">🟢 RAR/ZIP Cracker</a>
+  <a href="#rar">🟢 Khôi phụcRAR/ZIP</a>
   <a href="#huongdan"> Hướng dẫn</a>
   <a href="#unghо">💖 Ủng hộ</a>
 </nav>
@@ -217,15 +217,15 @@
     <div class="card-header">
       <div class="card-icon">🟢</div>
       <div>
-        <h3>Khôi phục Pass OFFIT</h3>
-        <span>MÕM Tool v3.5V4</span>
+        <h3>Khôi phục Pass Office</h3>
+        <span id="sub-mom">MÕM Tool</span>
       </div>
     </div>
     <div class="card-body">
       <div>
         <span class="badge badge-free">FREE</span>
         <span class="badge badge-pro">PRO</span>
-        <span class="badge badge-ver" id="ver-mom">v3.5V4</span>
+        <span class="badge badge-ver" id="ver-mom"></span>
       </div>
       <p style="margin-top:12px">Khôi phục mật khẩu file Excel, Word, PowerPoint bằng phương pháp vét cạn, từ điển và dải số. Hỗ trợ cả VBA password.</p>
       <p style="font-size:0.88rem;color:#888;margin-bottom:8px">🆓 <b>FREE</b>: tối đa độ dài pass :4 ký tự &nbsp;|&nbsp; 💎 <b>PRO</b>: không giới hạn độ dài</p>
@@ -237,7 +237,7 @@
         <li>Hỗ trợ Excel, Word, PowerPoint (.xlsx,XLS,XLSB... .docx, .pptx)</li>
         <li>Đa luồng — tốc độ cao</li>
       </ul>
-      <a class="btn-download" id="btn-mom" href="https://drive.google.com/file/d/1faeLFDvZgcLESAXGBZO9HKVVzaBco4yL/view?usp=drive_link" target="_blank">
+      <a class="btn-download" id="btn-mom" href="#" target="_blank">
         ⬇️ Tải xuống miễn phí
       </a>
     </div>
@@ -248,15 +248,15 @@
     <div class="card-header">
       <div class="card-icon">🟢</div>
       <div>
-        <h3>RAR/ZIP Cracker</h3>
-        <span>RARZIP Tool v3.5</span>
+        <h3>Khôi phục rar/zip</h3>
+        <span id="sub-rar">RARZIP Tool</span>
       </div>
     </div>
     <div class="card-body">
       <div>
         <span class="badge badge-free">FREE</span>
         <span class="badge badge-pro">PRO</span>
-        <span class="badge badge-ver" id="ver-rar">v3.5</span>
+        <span class="badge badge-ver" id="ver-rar"></span>
       </div>
       <p style="margin-top:12px">Khôi phục mật khẩu file nén RAR và ZIP bằng vét cạn hoặc từ điển. Hỗ trợ WinRAR và 7-Zip làm backend.</p>
       <p style="font-size:0.88rem;color:#888;margin-bottom:8px">🆓 <b>FREE</b>: tối đa độ dài pass :4 ký tự &nbsp;|&nbsp; 💎 <b>PRO</b>: không giới hạn độ dài</p>
@@ -268,7 +268,7 @@
         <li>Hiển thị tốc độ và tiến trình realtime</li>
         <li>Ctrl+click chọn nhiều bộ ký tự</li>
       </ul>
-      <a class="btn-download" id="btn-rar" href="https://drive.google.com/file/d/1o-BgbK9xP5lbbHbaEqY7Sz7UoHMzvge9/view?usp=drive_link" target="_blank">
+      <a class="btn-download" id="btn-rar" href="#" target="_blank">
         ⬇️ Tải xuống miễn phí
       </a>
     </div>
@@ -387,9 +387,17 @@ fetch(SHEET_CSV)
     const rarVer  = rows[4]?.[9];
 
     if (momLink) document.getElementById('btn-mom').href = momLink;
-    if (momVer)  document.getElementById('ver-mom').textContent = 'v' + momVer;
+    else document.getElementById('btn-mom').style.display = 'none';
+    if (momVer) {
+      document.getElementById('ver-mom').textContent = 'v' + momVer;
+      document.getElementById('sub-mom').textContent = 'MÕM Tool v' + momVer;
+    }
     if (rarLink) document.getElementById('btn-rar').href = rarLink;
-    if (rarVer)  document.getElementById('ver-rar').textContent = 'v' + rarVer;
+    else document.getElementById('btn-rar').style.display = 'none';
+    if (rarVer) {
+      document.getElementById('ver-rar').textContent = 'v' + rarVer;
+      document.getElementById('sub-rar').textContent = 'RARZIP Tool v' + rarVer;
+    }
   })
   .catch(() => {}); // Nếu lỗi thì giữ link mặc định
 </script>
