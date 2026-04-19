@@ -396,11 +396,7 @@
       <p>Không giới hạn độ dài, tốc độ tối đa</p>
 
       <div class="pkg-list" id="pkg-list">
-        <div class="pkg-item" data-pkg="1DAY"   data-price="5000"   data-label="1 NGÀY">☀️ 1 NGÀY &nbsp;<span>5.000đ</span></div>
-        <div class="pkg-item" data-pkg="1WEEK"  data-price="20000"  data-label="1 TUẦN">⏰ 1 TUẦN &nbsp;<span>20.000đ</span></div>
-        <div class="pkg-item" data-pkg="1MONTH" data-price="50000"  data-label="1 THÁNG">⭐ 1 THÁNG &nbsp;<span>50.000đ</span></div>
-        <div class="pkg-item" data-pkg="1YEAR"  data-price="200000" data-label="1 NĂM">�️ 1 NĂM &nbsp;<span>200.000đ</span></div>
-        <div class="pkg-item" data-pkg="VV"     data-price="500000" data-label="VĨNH VIỄN">♾️ VĨNH VIỄN &nbsp;<span>500.000đ</span></div>
+        <div style="text-align:center;color:#aaa;padding:16px 0">⏳ Đang tải gói...</div>
       </div>
 
       <div id="pro-form" style="display:none;margin-top:14px">
@@ -544,7 +540,44 @@ async function submitReg(e, type) {
     msg.textContent = '❌ Lỗi kết nối, thử lại sau.';
     msg.className = 'reg-msg err';
   }
-}// Chọn gói PRO
+}
+
+// Icons mặc định cho từng gói
+const PKG_ICONS = { '1DAY':'☀️', '1WEEK':'⏰', '1MONTH':'⭐', '1YEAR':'📅', 'VV':'♾️' };
+const PKG_LABELS = { '1DAY':'1 NGÀY', '1WEEK':'1 TUẦN', '1MONTH':'1 THÁNG', '1YEAR':'1 NĂM', 'VV':'VĨNH VIỄN' };
+
+// Fetch packages từ Sheet (cột G = key, cột H = giá)
+fetch(SHEET_CSV)
+  .then(r => r.text())
+  .then(csv => {
+    const rows = csv.split('\n').map(r => r.split(',').map(c => c.replace(/^"|"$/g,'').trim()));
+    const pkgs = [];
+    // Đọc từ hàng 2 trở đi, cột G (index 6) = key gói, cột H (index 7) = giá
+    for (let i = 1; i < rows.length; i++) {
+      const key   = rows[i][6];
+      const price = parseInt(rows[i][7]);
+      if (!key || isNaN(price)) continue;
+      pkgs.push({ pkg: key, price, label: PKG_LABELS[key] || key,
+                  fmt: price.toLocaleString('vi-VN') + 'đ' });
+    }
+    if (pkgs.length === 0) return;
+    const list = document.getElementById('pkg-list');
+    list.innerHTML = pkgs.map(p => `
+      <div class="pkg-item" data-pkg="${p.pkg}" data-price="${p.price}" data-label="${p.label}">
+        ${PKG_ICONS[p.pkg]||'📦'} ${p.label} &nbsp;<span>${p.fmt}</span>
+      </div>`).join('');
+    bindPkgItems();
+  })
+  .catch(() => {
+    // Fallback cứng nếu Sheet lỗi
+    document.getElementById('pkg-list').innerHTML = `
+      <div class="pkg-item" data-pkg="1DAY"   data-price="5000"   data-label="1 NGÀY">☀️ 1 NGÀY <span>5.000đ</span></div>
+      <div class="pkg-item" data-pkg="1WEEK"  data-price="20000"  data-label="1 TUẦN">⏰ 1 TUẦN <span>20.000đ</span></div>
+      <div class="pkg-item" data-pkg="1MONTH" data-price="50000"  data-label="1 THÁNG">⭐ 1 THÁNG <span>50.000đ</span></div>
+      <div class="pkg-item" data-pkg="1YEAR"  data-price="200000" data-label="1 NĂM">📅 1 NĂM <span>200.000đ</span></div>
+      <div class="pkg-item" data-pkg="VV"     data-price="500000" data-label="VĨNH VIỄN">♾️ VĨNH VIỄN <span>500.000đ</span></div>`;
+    bindPkgItems();
+  });
 let selectedPkg = null;
 document.querySelectorAll('.pkg-item').forEach(el => {
   el.addEventListener('click', () => {
