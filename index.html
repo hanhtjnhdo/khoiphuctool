@@ -133,6 +133,58 @@
   }
   .notice-box strong { color: #e67e22; }
 
+  /* REGISTER */
+  .register-section {
+    max-width: 900px; margin: 0 auto 60px; padding: 0 20px; text-align: center;
+  }
+  .register-section h2 { font-size: 1.6rem; margin-bottom: 10px; color: #2c3e50; }
+  .register-section > p { color: #666; margin-bottom: 28px; font-size: 0.95rem; }
+  .reg-cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;
+  }
+  .reg-card {
+    background: white; border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 28px 24px; text-align: left; position: relative;
+  }
+  .reg-badge {
+    display: inline-block; font-size: 0.75rem; font-weight: 700;
+    padding: 3px 12px; border-radius: 20px; margin-bottom: 12px;
+    background: #e8f5e9; color: #27ae60;
+  }
+  .pro-badge { background: #fff3e0; color: #e67e22; }
+  .reg-card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: #2c3e50; }
+  .reg-card > p { font-size: 0.88rem; color: #777; margin-bottom: 16px; }
+  .reg-card input {
+    width: 100%; padding: 10px 14px; border: 1.5px solid #e0e0e0;
+    border-radius: 8px; font-size: 0.95rem; margin-bottom: 10px;
+    box-sizing: border-box; outline: none; transition: border .2s;
+  }
+  .reg-card input:focus { border-color: #3498db; }
+  .btn-reg {
+    display: block; width: 100%; text-align: center; text-decoration: none;
+    padding: 11px; border-radius: 10px; font-weight: 700;
+    font-size: 0.95rem; border: none; cursor: pointer; transition: opacity .2s;
+    margin-top: 4px;
+  }
+  .free-btn { background: linear-gradient(135deg,#27ae60,#2ecc71); color: white; }
+  .pro-btn  { background: linear-gradient(135deg,#e67e22,#f39c12); color: white; }
+  .btn-reg:hover { opacity: 0.88; }
+  .reg-features { list-style: none; margin-bottom: 16px; }
+  .reg-features li { font-size: 0.9rem; color: #555; padding: 4px 0; }
+  .pkg-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+  .pkg-item {
+    padding: 10px 14px; border-radius: 10px; border: 2px solid #e0e0e0;
+    cursor: pointer; font-size: 0.92rem; font-weight: 600; color: #555;
+    display: flex; justify-content: space-between; transition: all .15s;
+  }
+  .pkg-item span { color: #e67e22; }
+  .pkg-item:hover  { border-color: #e67e22; background: #fff8f0; }
+  .pkg-item.active { border-color: #e67e22; background: #fff3e0; color: #e67e22; }
+  .reg-msg { margin-top: 10px; font-size: 0.88rem; font-weight: 600; min-height: 20px; }
+  .reg-msg.ok  { color: #27ae60; }
+  .reg-msg.err { color: #e74c3c; }
+
   /* FOOTER */
   footer {
     background: #2c3e50; color: #bdc3c7;
@@ -200,6 +252,7 @@
   <a href="#mom">🟢 Khôi phục office</a>
   <a href="#rar">🟢 Khôi phụcRAR/ZIP</a>
   <a href="#huongdan"> Hướng dẫn</a>
+  <a href="#dangky">📝 Đăng ký</a>
   <a href="#unghо">💖 Ủng hộ</a>
 </nav>
 
@@ -228,7 +281,7 @@
         <span class="badge badge-ver" id="ver-mom"></span>
       </div>
       <p style="margin-top:12px">Khôi phục mật khẩu file Excel, Word, PowerPoint bằng phương pháp vét cạn, từ điển và dải số. Hỗ trợ cả VBA password.</p>
-      <p style="font-size:0.88rem;color:#888;margin-bottom:8px">🆓 <b>FREE</b>: tối đa độ dài pass :4 ký tự &nbsp;|&nbsp; 💎 <b>PRO</b>: không giới hạn độ dài</p>
+      <p style="font-size:0.88rem;color:#888;margin-bottom:8px">🆓 <b>FREE</b>: tối đa độ dài pass :4 ký tự<br>💎 <b>PRO</b>: không giới hạn độ dài</p>
       <ul class="features">
         <li>Vét cạn (Brute Force) theo bộ ký tự tùy chỉnh</li>
         <li>Khôi phục bằng từ điển (Wordlist)</li>
@@ -259,7 +312,7 @@
         <span class="badge badge-ver" id="ver-rar"></span>
       </div>
       <p style="margin-top:12px">Khôi phục mật khẩu file nén RAR và ZIP bằng vét cạn hoặc từ điển. Hỗ trợ WinRAR và 7-Zip làm backend.</p>
-      <p style="font-size:0.88rem;color:#888;margin-bottom:8px">🆓 <b>FREE</b>: tối đa độ dài pass :4 ký tự &nbsp;|&nbsp; 💎 <b>PRO</b>: không giới hạn độ dài</p>
+      <p style="font-size:0.88rem;color:#888;margin-bottom:8px">🆓 <b>FREE</b>: tối đa độ dài pass :4 ký tự<br>💎 <b>PRO</b>: không giới hạn độ dài</p>
       <ul class="features">
         <li>Vét cạn theo bộ ký tự tùy chỉnh</li>
         <li>Khôi phục bằng từ điển (Wordlist)</li>
@@ -319,6 +372,54 @@
   </div>
 </div>
 
+<!-- ĐĂNG KÝ -->
+<div class="register-section" id="dangky">
+  <h2>📝 Đăng ký tài khoản</h2>
+  <p>Đăng ký tài khoản FREE miễn phí hoặc mua PRO để dùng không giới hạn.</p>
+  <div class="reg-cards">
+
+    <div class="reg-card free">
+      <div class="reg-badge">FREE</div>
+      <h3>Tài khoản FREE</h3>
+      <p>Tối đa 4 ký tự, dùng thử miễn phí</p>
+      <form id="form-free" onsubmit="submitReg(event,'free')">
+        <input type="text" placeholder="Tên / SĐT của bạn" id="free-name" required />
+        <input type="password" placeholder="Đặt mật khẩu (tự chọn)" id="free-pass" required />
+        <button type="submit" class="btn-reg free-btn">📨 Đăng ký FREE</button>
+      </form>
+      <div id="free-msg" class="reg-msg"></div>
+    </div>
+
+    <div class="reg-card pro">
+      <div class="reg-badge pro-badge">PRO</div>
+      <h3>Tài khoản PRO</h3>
+      <p>Không giới hạn độ dài, tốc độ tối đa</p>
+
+      <div class="pkg-list" id="pkg-list">
+        <div class="pkg-item" data-pkg="1DAY"   data-price="5000"   data-label="1 NGÀY">☀️ 1 NGÀY &nbsp;<span>5.000đ</span></div>
+        <div class="pkg-item" data-pkg="1WEEK"  data-price="20000"  data-label="1 TUẦN">⏰ 1 TUẦN &nbsp;<span>20.000đ</span></div>
+        <div class="pkg-item" data-pkg="1MONTH" data-price="50000"  data-label="1 THÁNG">⭐ 1 THÁNG &nbsp;<span>50.000đ</span></div>
+        <div class="pkg-item" data-pkg="1YEAR"  data-price="200000" data-label="1 NĂM">�️ 1 NĂM &nbsp;<span>200.000đ</span></div>
+        <div class="pkg-item" data-pkg="VV"     data-price="500000" data-label="VĨNH VIỄN">♾️ VĨNH VIỄN &nbsp;<span>500.000đ</span></div>
+      </div>
+
+      <div id="pro-form" style="display:none;margin-top:14px">
+        <input type="text"     placeholder="Tên / SĐT của bạn" id="pro-name" required />
+        <input type="password" placeholder="Đặt mật khẩu PRO"  id="pro-pass" required />
+        <div id="pro-qr-box" style="display:none;text-align:center;margin:12px 0">
+          <img id="pro-qr-img" src="" alt="QR thanh toán" style="width:220px;border-radius:12px;border:2px solid #f0f0f0" />
+          <div style="margin-top:8px;font-size:0.82rem;color:#888">STK: <b>96247328232</b> (BIDV)</div>
+          <div id="pro-ck-content" style="font-size:0.85rem;font-weight:700;color:#e67e22;margin-top:4px"></div>
+          <button onclick="copyProContent()" class="btn-copy" style="margin-top:8px">📋 Copy nội dung CK</button>
+        </div>
+        <button type="button" onclick="showProQR()" class="btn-reg pro-btn" id="btn-show-qr">💳 Tạo QR thanh toán</button>
+        <div id="pro-msg" class="reg-msg"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- DONATE -->
 <div class="donate" id="unghо">
   <h2>💖 Ủng hộ tác giả</h2>
@@ -368,7 +469,7 @@
     <a href="https://khoiphuctool.netlify.app/" target="_blank" style="color:#3498db;text-decoration:none;font-weight:600;">🌐 khoiphuctool.netlify.app</a>
     <a href="https://s.id/Khoiphuctools" target="_blank" style="color:#3498db;text-decoration:none;font-weight:600;">🔗 s.id/Khoiphuctools</a>
     <a href="https://s.id/Oktool" target="_blank" style="color:#3498db;text-decoration:none;font-weight:600;">🔗 s.id/Oktool</a>
-    <a href="https://github.com/hanhtjnhdo/khoiphuctool" target="_blank" style="color:#3498db;text-decoration:none;font-weight:600;">💻 github.com/hanhtjnhdo/khoiphuctool</a>
+    <a href="https://hanhtjnhdo.github.io/khoiphuctool/" target="_blank" style="color:#3498db;text-decoration:none;font-weight:600;">💻hanhtjnhdo.github.io/khoiphuctool/</a>
   </div>
   <span style="font-size:0.82rem;opacity:0.7">© 2026 . All rights reserved.</span>
 </footer>
@@ -406,6 +507,102 @@ fetch(SHEET_CSV)
     }
   })
   .catch(() => {}); // Nếu lỗi thì giữ link mặc định
+const WEBHOOK = 'https://script.google.com/macros/s/AKfycbwNbGDsEgOc5rRzUna-KuC9V6cY4x8tzNiqH8bRFqBUNwZJfUVvYkxPFbEeMYm1Bw/exec';
+
+async function submitReg(e, type) {
+  e.preventDefault();
+  const name = document.getElementById('free-name').value.trim();
+  const pass = document.getElementById('free-pass').value.trim();
+  const msg  = document.getElementById('free-msg');
+  if (!name || !pass) return;
+
+  msg.textContent = '⏳ Đang gửi...';
+  msg.className = 'reg-msg';
+
+  // Hash pass SHA-256
+  const buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pass));
+  const hash = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+
+  try {
+    await fetch(WEBHOOK, {
+      method: 'POST',
+      body: JSON.stringify({
+        time:     new Date().toLocaleString('vi-VN'),
+        app:      'WEB',
+        event:    'register',
+        account:  'FREE_REQUEST',
+        machine:  'WEB',
+        file:     "'" + name,
+        password: hash,
+        ip:       ''
+      })
+    });
+    msg.textContent = '✅ Đăng ký thành công! Admin sẽ duyệt sớm.';
+    msg.className = 'reg-msg ok';
+    document.getElementById('form-free').reset();
+  } catch {
+    msg.textContent = '❌ Lỗi kết nối, thử lại sau.';
+    msg.className = 'reg-msg err';
+  }
+}// Chọn gói PRO
+let selectedPkg = null;
+document.querySelectorAll('.pkg-item').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.pkg-item').forEach(x => x.classList.remove('active'));
+    el.classList.add('active');
+    selectedPkg = { pkg: el.dataset.pkg, price: el.dataset.price, label: el.dataset.label };
+    document.getElementById('pro-form').style.display = 'block';
+    document.getElementById('pro-qr-box').style.display = 'none';
+    document.getElementById('pro-msg').textContent = '';
+  });
+});
+
+async function showProQR() {
+  const name = document.getElementById('pro-name').value.trim();
+  const pass = document.getElementById('pro-pass').value.trim();
+  if (!selectedPkg) { alert('Vui lòng chọn gói!'); return; }
+  if (!name || !pass) { alert('Vui lòng nhập tên và mật khẩu!'); return; }
+
+  // Hash pass SHA-256
+  const buf  = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(pass));
+  const hash = Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+
+  const ckContent = `MOMTOOL ${pass} ${selectedPkg.pkg}`;
+  const qrUrl = `https://img.vietqr.io/image/970418-96247328232-compact2.png?amount=${selectedPkg.price}&addInfo=${encodeURIComponent(ckContent)}&accountName=CHANPRO+TOOLS`;
+
+  document.getElementById('pro-qr-img').src = qrUrl;
+  document.getElementById('pro-ck-content').textContent = `Nội dung CK: ${ckContent}`;
+  document.getElementById('pro-qr-box').style.display = 'block';
+  document.getElementById('btn-show-qr').textContent = '🔄 Tạo lại QR';
+  document.getElementById('pro-msg').textContent = '⏳ Hệ thống tự xác nhận trong vòng 1 phút sau khi chuyển khoản.';
+  document.getElementById('pro-msg').className = 'reg-msg';
+
+  // Gửi pro_request lên sheet
+  try {
+    await fetch(WEBHOOK, {
+      method: 'POST',
+      body: JSON.stringify({
+        time:     new Date().toLocaleString('vi-VN'),
+        app:      'WEB',
+        event:    'pro_request',
+        account:  name,
+        machine:  'WEB',
+        file:     ckContent,
+        password: hash,
+        package:  selectedPkg.label,
+        ip:       ''
+      })
+    });
+  } catch(e) {}
+}
+
+function copyProContent() {
+  const txt = document.getElementById('pro-ck-content').textContent.replace('Nội dung CK: ','');
+  navigator.clipboard.writeText(txt);
+  event.target.textContent = '✅ Đã copy!';
+  setTimeout(() => event.target.textContent = '📋 Copy nội dung CK', 2000);
+}
+
 </script>
 </body>
 </html>
