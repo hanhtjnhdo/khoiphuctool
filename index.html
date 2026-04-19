@@ -542,6 +542,20 @@ async function submitReg(e, type) {
   }
 }
 
+let selectedPkg = null;
+function bindPkgItems() {
+  document.querySelectorAll('.pkg-item').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.pkg-item').forEach(x => x.classList.remove('active'));
+      el.classList.add('active');
+      selectedPkg = { pkg: el.dataset.pkg, price: el.dataset.price, label: el.dataset.label };
+      document.getElementById('pro-form').style.display = 'block';
+      document.getElementById('pro-qr-box').style.display = 'none';
+      document.getElementById('pro-msg').textContent = '';
+    });
+  });
+}
+
 // Icons mặc định cho từng gói
 const PKG_ICONS = { '1DAY':'☀️', '1WEEK':'⏰', '1MONTH':'⭐', '1YEAR':'📅', 'VV':'♾️' };
 const PKG_LABELS = { '1DAY':'1 NGÀY', '1WEEK':'1 TUẦN', '1MONTH':'1 THÁNG', '1YEAR':'1 NĂM', 'VV':'VĨNH VIỄN' };
@@ -578,17 +592,6 @@ fetch(SHEET_CSV)
       <div class="pkg-item" data-pkg="VV"     data-price="500000" data-label="VĨNH VIỄN">♾️ VĨNH VIỄN <span>500.000đ</span></div>`;
     bindPkgItems();
   });
-let selectedPkg = null;
-document.querySelectorAll('.pkg-item').forEach(el => {
-  el.addEventListener('click', () => {
-    document.querySelectorAll('.pkg-item').forEach(x => x.classList.remove('active'));
-    el.classList.add('active');
-    selectedPkg = { pkg: el.dataset.pkg, price: el.dataset.price, label: el.dataset.label };
-    document.getElementById('pro-form').style.display = 'block';
-    document.getElementById('pro-qr-box').style.display = 'none';
-    document.getElementById('pro-msg').textContent = '';
-  });
-});
 
 async function showProQR() {
   const name = document.getElementById('pro-name').value.trim();
