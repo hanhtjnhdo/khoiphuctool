@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-R50KDN2TCB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-R50KDN2TCB');
+</script>
+<meta name="description" content="Hướng dẫn chi tiết KhoiPhucTool V6 - bộ công cụ khôi phục mật khẩu tổng hợp: Excel, Word, PowerPoint, RAR, ZIP. Brute force, từ điển, VBA crack, đa luồng X1-X8, hỗ trợ pass dài 10+ ký tự.">
+<meta name="keywords" content="KhoiPhucTool V6 hướng dẫn, tool khôi phục mật khẩu tổng hợp, crack pass excel rar zip cùng lúc, phần mềm khôi phục mật khẩu all in one, crack pass dài 10 ký tự">
+<link rel="canonical" href="https://khoiphuctool.github.io/khoiphuctool/huong-dan-khoiphuctool.html">
+<link rel="icon" href="LOGO.png" type="image/png"><style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI',sans-serif; background:#f0f4f8; color:#2c3e50; }
+  nav { background:white; box-shadow:0 2px 8px rgba(0,0,0,0.08); display:flex; align-items:center; justify-content:space-between; padding:8px 16px; position:sticky; top:0; z-index:100; flex-wrap:nowrap; }
+  nav a { text-decoration:none; color:#2c3e50; font-weight:600; padding:6px 14px; border-radius:20px; font-size:0.88rem; transition:all .2s; white-space:nowrap; }
+  nav a:hover { background:#8e24aa; color:white; }
+  .nav-brand { font-weight:700; font-size:0.95rem; display:flex; align-items:center; gap:6px; flex-shrink:0; }
+  .nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+  .nav-toggle span { display:block; width:24px; height:2px; background:#2c3e50; border-radius:2px; transition:all .3s; }
+  .nav-toggle.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity:0; }
+  .nav-toggle.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+  .nav-links { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  @media(max-width:768px){
+    .nav-toggle { display:flex; }
+    .nav-links { display:none; position:absolute; top:100%; left:0; right:0; background:white; flex-direction:column; align-items:stretch; padding:10px 16px; gap:4px; box-shadow:0 8px 20px rgba(0,0,0,0.12); border-top:1px solid #eee; }
+    .nav-links.open { display:flex; }
+    .nav-links a { padding:10px 14px; border-radius:10px; font-size:0.9rem; border-bottom:1px solid #f0f0f0; }
+    .nav-links a:last-child { border-bottom:none; }
+  }
+  .hero { background:linear-gradient(135deg,#8e24aa,#ab47bc); color:white; text-align:center; padding:50px 20px 40px; }
+  .hero h1 { font-size:2rem; margin-bottom:10px; }
+  .hero p { font-size:1rem; opacity:0.9; }
+  .badge-new { background:rgba(255,255,255,0.25); padding:4px 14px; border-radius:20px; font-size:0.85rem; font-weight:700; display:inline-block; margin-top:10px; }
+  .content { max-width:860px; margin:40px auto; padding:0 20px; }
+  .section { background:white; border-radius:14px; padding:28px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,0.07); }
+  .section h2 { font-size:1.3rem; color:#8e24aa; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid #f3e5f5; }
+  .section h3 { font-size:1.05rem; color:#2c3e50; margin:16px 0 8px; }
+  .section p { color:#555; line-height:1.75; margin-bottom:12px; font-size:0.95rem; }
+  .section ul, .section ol { padding-left:22px; color:#555; line-height:1.9; font-size:0.95rem; }
+  .tip  { background:#f3e5f5; border-left:4px solid #8e24aa; border-radius:8px; padding:12px 16px; margin:14px 0; font-size:0.9rem; color:#2c3e50; }
+  .warn { background:#fff8e1; border-left:4px solid #f39c12; border-radius:8px; padding:12px 16px; margin:14px 0; font-size:0.9rem; color:#555; }
+  .new  { background:#e8f5e9; border-left:4px solid #27ae60; border-radius:8px; padding:12px 16px; margin:14px 0; font-size:0.9rem; color:#2c3e50; }
+  .compare { display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px; margin-top:14px; }
+  .compare-card { border-radius:10px; padding:16px; text-align:center; }
+  .compare-card h4 { font-size:0.95rem; margin-bottom:8px; }
+  .compare-card ul { list-style:none; padding:0; font-size:0.85rem; color:#555; line-height:1.8; text-align:left; }
+  .c-mom  { background:#e8f5e9; border:2px solid #27ae60; }
+  .c-rar  { background:#fff3e0; border:2px solid #e67e22; }
+  .c-kpt  { background:#f3e5f5; border:2px solid #8e24aa; }
+  .step-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px; margin-top:14px; }
+  .step-card { background:#f8f9fa; border-radius:10px; padding:16px; text-align:center; }
+  .step-num { width:36px; height:36px; background:#8e24aa; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; margin:0 auto 10px; }
+  .step-card h4 { font-size:0.95rem; margin-bottom:6px; }
+  .step-card p { font-size:0.85rem; color:#666; }
+  .btn-dl { display:inline-block; background:linear-gradient(135deg,#8e24aa,#ab47bc); color:white; text-decoration:none; padding:12px 28px; border-radius:10px; font-weight:700; margin-top:10px; }
+  .toc { background:#f8f9fa; border-radius:10px; padding:18px 22px; margin-bottom:24px; }
+  .toc h3 { font-size:1rem; margin-bottom:10px; color:#2c3e50; }
+  .toc a { display:block; color:#8e24aa; text-decoration:none; padding:3px 0; font-size:0.9rem; }
+  .toc a:hover { text-decoration:underline; }
+  .feature-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:14px; }
+  .feature-item { background:#f8f9fa; border-radius:10px; padding:14px; font-size:0.9rem; }
+  .feature-item strong { display:block; margin-bottom:4px; color:#8e24aa; }
+  footer { background:#2c3e50; color:#bdc3c7; text-align:center; padding:24px; font-size:0.85rem; margin-top:40px; }
+  footer a { color:#3498db; text-decoration:none; }
+  @media(max-width:600px){ .compare { grid-template-columns:1fr; } }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/khoiphuctool/" class="nav-brand">🏠 KhoiPhucTool</a>
+  <button class="nav-toggle" onclick="this.classList.toggle('open');document.getElementById('nav-links-kpt').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="nav-links-kpt">
+    <a href="huong-dan-mom.html">📗 MÕM Tool</a>
+    <a href="huong-dan-rarzip.html">📙 RARZIP Tool</a>
+    <a href="huong-dan-khoiphuctool.html" style="background:#8e24aa;color:white;"><img src="LOGO.png" style="width:16px;height:16px;vertical-align:middle;border-radius:50%;margin-right:3px;"> KhoiPhucTool V6</a>
+    <a href="tags.html">🏷️ Từ khóa</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1><img src="LOGO.png" style="width:26px;height:26px;vertical-align:middle;margin-right:3px;border-radius:50%;"> Hướng dẫn KhoiPhucTool <span id="hero-kpt-ver">V6</span></h1>
+  <p>Bộ công cụ khôi phục mật khẩu tổng hợp — Excel, Word, RAR, ZIP tất cả trong một</p>
+  <span class="badge-new">✨ Phiên bản mới nhất</span>
+</div>
+
+<div class="content">
+
+  <div class="toc">
+    <h3>📋 Mục lục</h3>
+    <a href="#gioi-thieu">1. KhoiPhucTool <span class="kpt-ver">V6</span> là gì?</a>
+    <a href="#moi-v6">2. Tính năng mới trong V6</a>
+    <a href="#so-sanh">3. So sánh với MÕM Tool và RARZIP Tool</a>
+    <a href="#tai-ve">4. Tải về và đăng nhập</a>
+    <a href="#giao-dien">5. Giao diện tổng quan</a>
+    <a href="#office">6. Khôi phục mật khẩu Office (Excel, Word, PowerPoint)</a>
+    <a href="#rarzip">7. Khôi phục mật khẩu RAR/ZIP</a>
+    <a href="#vba">8. Gỡ khóa VBA Macro</a>
+    <a href="#da-luong">9. Đa luồng X1-X8 & tạm dừng từng luồng</a>
+    <a href="#meo">10. Mẹo sử dụng hiệu quả</a>
+  </div>
+
+  <!-- GIỚI THIỆU -->
+  <div class="section" id="gioi-thieu">
+    <h2>1. KhoiPhucTool <span class="kpt-ver">V6</span> là gì?</h2>
+    <p>KhoiPhucTool <span class="kpt-ver">V6</span> là phiên bản nâng cấp gộp toàn bộ tính năng của MÕM Tool và RARZIP Tool vào một ứng dụng duy nhất. Không cần mở nhiều app, không cần chuyển đổi giữa các tool.</p>
+    <div class="new">✨ <strong>Mới trong <span class="kpt-ver">V6</span>:</strong> Hỗ trợ pass dài 10+ ký tự không đơ, batch feeding tự động (500K/đợt), ETA hiển thị năm-tháng-ngày-giờ, cảnh báo khi candidates > 50 triệu, GUI poll tự khởi động lại — không cần ấn tạm dừng/tiếp tục.</div>
+    <div class="feature-grid">
+      <div class="feature-item"><strong>📊 Office</strong>.xlsx .xls .xlsb .xlsm .docx .doc .pptx .ppt</div>
+      <div class="feature-item"><strong>📦 RAR/ZIP</strong>RAR3, RAR5, ZIP (AES-256)</div>
+      <div class="feature-item"><strong>🔧 VBA</strong>Gỡ khóa macro Excel</div>
+      <div class="feature-item"><strong>⚡ Đa luồng</strong>X1 → X8 song song</div>
+      <div class="feature-item"><strong>⏸ Per-worker</strong>Pause/resume từng luồng</div>
+      <div class="feature-item"><strong>📚 Từ điển</strong>Wordlist + khoảng số</div>
+    </div>
+  </div>
+
+  <!-- TÍNH NĂNG MỚI V6 -->
+  <div class="section" id="moi-v6">
+    <h2>2. Tính năng mới trong V6</h2>
+    <div class="new">🆕 <strong>V6 tập trung vào độ ổn định khi brute force pass dài và cải thiện trải nghiệm GUI.</strong></div>
+
+    <h3>✅ Hỗ trợ pass dài 10+ ký tự — không còn đơ</h3>
+    <p>Phiên bản cũ bị đơ/crash khi đặt max length ≥ 10 vì cố load toàn bộ hàng tỷ candidates vào RAM cùng lúc. V6 giải quyết bằng <strong>batch feeding</strong>: chia nhỏ thành từng đợt 500K candidates, workers xử lý xong đợt này mới lấy đợt tiếp theo.</p>
+
+    <h3>✅ ETA hiển thị năm-tháng-ngày-giờ</h3>
+    <p>Thay vì hiển thị <code>~19059325337099d 17h</code> khó đọc, V6 hiển thị đầy đủ dạng <code>~52y 3mo 12d 8h</code>. Với pass ngắn hơn: <code>~3d 14h</code> hoặc <code>22:44:27</code>.</p>
+
+    <h3>✅ Cảnh báo khi candidates > 50 triệu</h3>
+    <p>Khi tổng số combinations vượt 50 triệu, app hiện popup cảnh báo kèm ước tính thời gian thực tế — giúp bạn quyết định có nên tiếp tục hay thu hẹp bộ ký tự.</p>
+
+    <h3>✅ GUI poll tự khởi động lại</h3>
+    <p>Trước đây khi bắt đầu với pass dài, các W1-W8 không cập nhật ngay — phải ấn tạm dừng rồi tiếp tục mới thấy. V6 sửa lỗi này: GUI poll tự chờ queue sẵn sàng và tự khởi động lại.</p>
+
+    <h3>✅ Sửa lỗi crash OSError</h3>
+    <p>Lỗi <code>OSError: [Errno 22] Invalid argument</code> khi <code>time.gmtime()</code> nhận số giây quá lớn đã được xử lý hoàn toàn.</p>
+
+    <div class="tip">💡 Dù V6 hỗ trợ pass 10+ ký tự, thực tế brute force pass 10 ký tự với charset đầy đủ (62 ký tự) cần ~52 năm. Hãy dùng <strong>Pattern</strong> nếu biết một phần mật khẩu để giảm thời gian xuống còn vài giây.</div>
+  </div>
+
+  <!-- SO SÁNH -->
+  <div class="section" id="so-sanh">
+    <h2>3. So sánh với MÕM Tool và RARZIP Tool</h2>
+    <div class="compare">
+      <div class="compare-card c-mom">
+        <h4>📗 MÕM Tool</h4>
+        <ul>
+          <li>✅ Excel, Word, PPT</li>
+          <li>✅ VBA Crack</li>
+          <li>❌ RAR/ZIP</li>
+          <li>✅ X1-X8</li>
+        </ul>
+      </div>
+      <div class="compare-card c-rar">
+        <h4>📙 RARZIP Tool</h4>
+        <ul>
+          <li>❌ Office</li>
+          <li>❌ VBA</li>
+          <li>✅ RAR/ZIP</li>
+          <li>✅ X1-X8</li>
+        </ul>
+      </div>
+      <div class="compare-card c-kpt">
+        <h4><img src="LOGO.png" style="width:26px;height:26px;vertical-align:middle;margin-right:3px;border-radius:50%;"> KhoiPhucTool <span class="kpt-ver">V6</span></h4>
+        <ul>
+          <li>✅ Excel, Word, PPT</li>
+          <li>✅ VBA Crack</li>
+          <li>✅ RAR/ZIP</li>
+          <li>✅ X1-X8</li>
+          <li>✅ Pause per-worker</li>
+          <li>✅ Pass dài 10+ ký tự</li>
+          <li>✅ ETA năm-tháng-ngày-giờ</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tip">💡 Nếu chỉ cần một loại file, dùng tool chuyên biệt (MÕM hoặc RARZIP) sẽ nhẹ hơn. KhoiPhucTool V6 phù hợp khi cần xử lý nhiều loại file.</div>
+  </div>
+
+  <!-- TẢI VỀ -->
+  <div class="section" id="tai-ve">
+    <h2>4. Tải về và đăng nhập</h2>
+    <div class="step-grid">
+      <div class="step-card"><div class="step-num">1</div><h4>Tải file .exe</h4><p>Nhấn nút tải xuống trên trang chủ</p></div>
+      <div class="step-card"><div class="step-num">2</div><h4>Mở file</h4><p>Double-click, không cần cài đặt</p></div>
+      <div class="step-card"><div class="step-num">3</div><h4>Đăng nhập</h4><p>Nhập mật khẩu FREE hoặc PRO</p></div>
+      <div class="step-card"><div class="step-num">4</div><h4>Chọn loại file</h4><p>Office hoặc RAR/ZIP</p></div>
+    </div>
+    <div class="warn">⚠️ Cần WinRAR hoặc 7-Zip để xử lý file RAR. File ZIP không cần.</div>
+    <a href="/khoiphuctool/#kpt" class="btn-dl" id="btn-dl-kpt">⬇️ Tải KhoiPhucTool <span id="ver-kpt-hd">V6</span></a>
+    <a href="https://vt.tiktok.com/ZS9nccdvM/" target="_blank" rel="noopener" class="btn-dl" style="background:linear-gradient(135deg,#010101,#2d2d2d);margin-top:10px;">▶️ Xem video hướng dẫn TikTok</a>
+  </div>
+
+  <!-- GIAO DIỆN -->
+  <div class="section" id="giao-dien">
+    <h2>5. Giao diện tổng quan</h2>
+    <p>Giao diện chia thành các khu vực chính:</p>
+    <ul>
+      <li><strong>Chọn file:</strong> Kéo thả hoặc Browse — hỗ trợ cả Office lẫn RAR/ZIP</li>
+      <li><strong>Workers X1-X8:</strong> Chọn số luồng song song (FREE chỉ X1, PRO X1-X8)</li>
+      <li><strong>Tab nội dung:</strong> Vét cạn / VBA Crack / Từ điển & Số</li>
+      <li><strong>Thanh trạng thái:</strong> Candidate đang thử, thời gian, ETA, tốc độ</li>
+      <li><strong>W1-W8 rows:</strong> Tiến độ từng luồng riêng biệt, nút ⏸/▶ per-worker</li>
+    </ul>
+    <div class="tip">💡 Nút 🔍 Kiểm tra sẽ phân tích loại mã hóa của file và ước tính tốc độ dò.</div>
+  </div>
+
+  <!-- OFFICE -->
+  <div class="section" id="office">
+    <h2>6. Khôi phục mật khẩu Office</h2>
+    <p>Hỗ trợ .xlsx, .xls, .xlsb, .xlsm, .docx, .doc, .pptx, .ppt</p>
+    <h3>Các bước:</h3>
+    <ol>
+      <li>Chọn file Office ở ô trên cùng</li>
+      <li>Nhấn <strong>🔍 Kiểm tra</strong> để xem loại mã hóa</li>
+      <li>Chọn tab <strong>🔍 Vét cạn</strong> hoặc <strong>📚 Từ điển & Số</strong></li>
+      <li>Cấu hình bộ ký tự, độ dài hoặc pattern</li>
+      <li>Chọn số luồng X1-X8</li>
+      <li>Nhấn <strong>▶️ Bắt đầu</strong></li>
+    </ol>
+    <div class="tip">💡 File .xls cũ (RC4) dò rất nhanh ~5,000-20,000 pass/s. File .xlsx mới (AES-256) chậm hơn ~5-15 pass/s.</div>
+  </div>
+
+  <!-- RAR/ZIP -->
+  <div class="section" id="rarzip">
+    <h2>7. Khôi phục mật khẩu RAR/ZIP</h2>
+    <p>Hỗ trợ RAR3, RAR5, ZIP (bao gồm AES-256)</p>
+    <h3>Các bước:</h3>
+    <ol>
+      <li>Chọn file RAR hoặc ZIP ở ô chọn file</li>
+      <li>Kiểm tra đường dẫn UnRAR.exe / 7z.exe (tự động điền)</li>
+      <li>Cấu hình bộ ký tự và độ dài hoặc pattern</li>
+      <li>Nhấn <strong>▶️ Bắt đầu</strong></li>
+    </ol>
+    <h3>Pattern cho RAR/ZIP:</h3>
+    <p>Dùng <code>*</code> cho ký tự chưa biết. Ví dụ: <code>2024**</code> thử 202400 → 2024zz</p>
+  </div>
+
+  <!-- VBA -->
+  <div class="section" id="vba">
+    <h2>8. Gỡ khóa VBA Macro</h2>
+    <p>Dành cho file .xlsm, .xlsb, .xls có VBA bị khóa.</p>
+    <ol>
+      <li>Chọn file Excel có VBA</li>
+      <li>Chọn tab <strong>🔧 VBA Crack</strong></li>
+      <li>Nhấn <strong>🔍 QUÉT VBA</strong></li>
+      <li>Chọn <strong>Cách 1: XÓA PASS</strong> hoặc <strong>Cách 2: ĐÈ PASS '123'</strong></li>
+      <li>Mở file mới tạo trong Excel</li>
+    </ol>
+  </div>
+
+  <!-- ĐA LUỒNG -->
+  <div class="section" id="da-luong">
+    <h2>9. Đa luồng X1-X8 & tạm dừng từng luồng</h2>
+    <p>Chia toàn bộ candidates thành các chunk, mỗi luồng xử lý 1 chunk song song — giống như mở nhiều app cùng lúc nhưng trong 1 app duy nhất.</p>
+    <ul>
+      <li><strong>X1</strong> — 1 luồng, dùng 1 nhân CPU. FREE + PRO, phù hợp máy yếu hoặc CPU 2 nhân</li>
+      <li><strong>X2</strong> — 2 luồng, dùng 2 nhân CPU. Nhanh ~2x. Cần CPU ≥ 2 nhân</li>
+      <li><strong>X3/X4/X5</strong> — 3-5 luồng. Cần CPU ≥ 4 nhân, chỉ PRO</li>
+      <li><strong>X6/X7/X8</strong> — 6-8 luồng. Nhanh nhất. Cần CPU ≥ 6 nhân, chỉ PRO</li>
+    </ul>
+    <div class="new">✨ <strong>Tạm dừng từng luồng riêng lẻ:</strong> Mỗi luồng W1-W8 có nút ⏸/▶ riêng — có thể pause/resume từng luồng độc lập mà không ảnh hưởng luồng khác. Timer của từng luồng dừng chính xác khi pause.</div>
+    <div class="tip">💡 Kiểm tra số nhân CPU: Chuột phải Taskbar → Task Manager → Performance → CPU → xem "Cores". Chọn số luồng ≤ số nhân CPU thực tế.</div>
+    <p>Màn hình hiển thị <strong>W1-W8</strong> — mỗi hàng là 1 luồng với: candidate đang thử | số đã thử/tổng | ⏱ thời gian riêng | ⏳ ETA | % | tốc độ</p>
+    <p>Khi tìm thấy mật khẩu, luồng tìm được sẽ hiện <strong>✅ TÌM THẤY!</strong></p>
+    <div class="warn">⚠️ Dùng X8 trên CPU 4 nhân không nhanh hơn X4, thậm chí chậm hơn. Chọn số luồng ≤ số nhân CPU thực tế.</div>
+  </div>
+
+  <!-- MẸO -->
+  <div class="section" id="meo">
+    <h2>10. Mẹo sử dụng hiệu quả</h2>
+    <ul>
+      <li>Biết mật khẩu là số → chỉ dùng <strong>0-9</strong>, giảm 90% thời gian</li>
+      <li>Biết độ dài chính xác → đặt min = max = độ dài đó</li>
+      <li>Biết một phần → dùng <strong>Pattern</strong> với <code>*</code></li>
+      <li>Ctrl+click để chọn nhiều bộ ký tự cùng lúc</li>
+      <li>Dùng <strong>X6-X8</strong> trên máy 6-8 core CPU để tối đa tốc độ</li>
+      <li>Pause luồng chậm, để luồng nhanh chạy tiếp — tối ưu tài nguyên</li>
+      <li>Tắt các ứng dụng nặng khác khi đang dò</li>
+      <li>File .xls cũ → dò nhanh hơn nhiều so với .xlsx mới</li>
+      <li>Nếu biết mật khẩu gần đúng → dùng từ điển tự tạo</li>
+    </ul>
+    <div class="warn">⚠️ Chỉ dùng để khôi phục mật khẩu của chính bạn. Không dùng để truy cập trái phép tài liệu người khác — vi phạm Điều 286 BLHS VN.</div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>KHÔI PHỤC TOOLS</strong> — Liên hệ: Zalo 0962768533<br>
+  <a href="/khoiphuctool/">🏠 Trang chủ</a> &nbsp;|&nbsp;
+  <a href="huong-dan-mom.html">📗 Hướng dẫn MÕM</a> &nbsp;|&nbsp;
+  <a href="huong-dan-rarzip.html">📙 Hướng dẫn RARZIP</a> &nbsp;|&nbsp;
+  <a href="huong-dan-khoiphuctool.html"><img src="LOGO.png" style="width:26px;height:26px;vertical-align:middle;margin-right:3px;border-radius:50%;"> Hướng dẫn KPT V6</a> &nbsp;|&nbsp;
+  <a href="tags.html">🏷️ Từ khóa</a>
+</footer>
+
+<script>
+(function(){
+  const _uk=['Kx9mPz','7rNqLb','Bv3Wts','Hn5Yqr','Qd8Fcp'];
+  const _up=[[42,48,107,93,51,50,6,78,117,20,105,17,41,74,119,23,28,23,47,14,91,95,52,9,17,43,12,7,50,72,123,14],[84,65,12,8,22,53,113,25,45,67,36,14,109,42,28,11,0,80,102,4,3,38,36,11,84,52,62,39,29,12,97,3],[33,68,105,46,23,43,42,64,87,15,38,31,27,46,121,15,23,30,58,64,124,3,38,11,13,49,121,25,22,59,8,3],[28,58,99,44,18,53,56,8,123,107,55,42,44,4,116,47,43,65,18,30,80,48,72,66,43,58,12,105,18,42,47,87],[51,87,110,118,44,29,31,30,92,47,57,30,48,51,105,127,44,52,28,87,117,44,0,69,30,48,121,60]];
+  function _xd(p,k){return p.map((a,i)=>{const b=a.map((c,j)=>String.fromCharCode(c^k[i].charCodeAt(j%k[i].length))).join('');return atob(b);}).join('');}
+  fetch(_xd(_up,_uk)).then(r=>r.text()).then(csv=>{
+    const rows=csv.split('\n').map(r=>r.replace(/\r/g,'').split(',').map(c=>c.replace(/^"|"$/g,'').trim()));
+    // rows[5][9] = link KPT, rows[6][9] = version KPT
+    const link=rows[5]?.[9], ver=rows[6]?.[9];
+    if(link){const b=document.getElementById('btn-dl-kpt');if(b){b.href=link;b.target='_blank';}}
+    if(ver){
+      // Cập nhật tất cả chỗ hiển thị version
+      document.querySelectorAll('.kpt-ver, #ver-kpt-hd, #nav-kpt-ver, #hero-kpt-ver')
+        .forEach(el => el.textContent = ver);
+      // Cập nhật title và meta description động
+      document.title = `Hướng dẫn KhoiPhucTool ${ver} - Khôi phục mật khẩu Excel RAR ZIP Word tất cả trong một`;
+    }
+  }).catch(()=>{});
+})();
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
